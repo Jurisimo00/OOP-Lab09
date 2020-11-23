@@ -1,7 +1,10 @@
 package it.unibo.oop.lab.lambda.ex01;
 
+import java.nio.channels.NonWritableChannelException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,6 +15,12 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+//import sun.awt.www.content.audio.x_aiff;
+
+//import sun.awt.www.content.audio.x_aiff;
+
+//import com.sun.java.swing.ui.ToggleActionPropertyChangeListener;
 
 /**
  * This class will contain four utility functions on lists and maps, of which the first one is provided as example.
@@ -61,8 +70,12 @@ public final class LambdaUtilities {
         /*
          * Suggestion: consider Optional.filter
          */
-        return null;
-    }
+        final List<Optional<T>> list2 = new ArrayList<>();
+        list.stream()
+        .map(t -> Optional.of(t))
+        .forEach(t -> list2.add(t.filter(pre)));
+        return list2;
+        }
 
     /**
      * @param list
@@ -80,6 +93,11 @@ public final class LambdaUtilities {
         /*
          * Suggestion: consider Map.merge
          */
+        final List <R> keyList = list.stream()
+                                    .map(op)
+                                    .collect(Collectors.toList());
+        System.out.println(keyList);
+        Map<R, T> map = new HashMap<>();
         return null;
     }
 
@@ -114,6 +132,7 @@ public final class LambdaUtilities {
         /*
          * [1, 101, 2, 102, 3, 103, 4, 104, 5, 105, 6, 106, 7, 107]
          */
+        System.out.println(li);
         System.out.println(group(li, x -> x % 2 == 0 ? "even" : "odd"));
         /*
          * {odd=[1, 3, 5, 7], even=[2, 4, 6]}
