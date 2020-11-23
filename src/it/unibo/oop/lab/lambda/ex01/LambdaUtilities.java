@@ -16,6 +16,8 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.sun.tools.javac.util.Context.Key;
+
 //import sun.awt.www.content.audio.x_aiff;
 
 //import sun.awt.www.content.audio.x_aiff;
@@ -93,11 +95,14 @@ public final class LambdaUtilities {
         /*
          * Suggestion: consider Map.merge
          */
-        final List <R> keyList = list.stream()
-                                    .map(op)
-                                    .collect(Collectors.toList());
-        System.out.println(keyList);
-        Map<R, T> map = new HashMap<>();
+        final Set<T> odd = new HashSet<>();
+        final Set<T> even = new HashSet<>();
+        
+        Map<R, Set<T>> map = new HashMap<>();
+        //list.stream()
+            
+        System.out.println(map);
+        
         return null;
     }
 
